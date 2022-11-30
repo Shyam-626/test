@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Looping</title>
+    <style>
+        input{
+            border: none;
+            padding: 10px;
+            background-color: bisque;
+            color: black;
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow: 0px 0px 2px black;
+
+        }
+        input:focus{
+            outline: none;
+            box-shadow: 0px 0px 6px black;
+        }
+        #btn{
+            margin: 10px 5px;
+            background-color: rgb(24, 97, 233);
+            color: rgb(233, 227, 227);
+            padding: 10px 25px;
+            border: none;
+            border-collapse: collapse;
+            border-radius: 5px;
+            box-shadow: 0px 0px 6px black;
+            font-size: 15px;
+            font-weight: 300;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        #btn:hover{
+            box-shadow: 0px 0px 8px black;
+        }
+        table{
+            margin: 10px 5px;
+            text-align: left;
+
+        }
+        th{
+            padding: 8px 20px;
+        }
+        td{
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Table Looping using forEach and Callback Functions -->
+<input id="inp" type="text" placeholder="Enter your name" style="margin: 5px 0px;"><br>
+<input id="inp1" type="text" placeholder="Enter your Age" style="margin: 5px 0px;"><br>
+<input id="inp2" type="text" placeholder="Enter your Place" style="margin: 5px 0px;"><br>
+<button id="btn" onclick="push({name:a.value,age:b.value,place:c.value,},fill)" type="button">Submit</button>
+
+
+<table border="1px" style="border-collapse: collapse;;">
+    <thead>
+        <tr>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>PLACE</th>
+        </tr>
+    </thead>
+    <tbody id="body">
+
+    </tbody>
+</table>
+
+
+
+
+
+
+    <script>
+        let data = [
+            {
+                name: "John",
+                age : 50,
+                place :"Kochi",
+            },{
+                name: "sandhosh",
+                age : 30,
+                place: "Ekm",
+            },{
+                name:"sasi",
+                age:30,
+                place:"Malappuram",
+            },
+            {
+                name:"Amal",
+                age:30,
+                place:"Malappuram", 
+            },
+            {
+                name:"Ajay",
+                age:22,
+                place:"Kollam",
+            }
+        ]
+                let a=document.getElementById('inp')
+                let b=document.getElementById('inp1')
+                let c=document.getElementById('inp2')
+
+            function fill(){
+
+                let detaile="";
+
+                // ....forEach Method....
+
+                data.forEach(value=>{
+                    detaile+=`<tr><td>${value.name}</td><td>${value.age}</td><td>${value.place}</td></tr>`
+                });
+                document.getElementById('body').innerHTML=detaile;
+            }
+
+
+            // data pushing to array using push method and callbacking a function using callback function
+
+
+            function push(info,call){
+                data.push(info)
+                call()
+                if (a.value !="" || b.value !="" || c.value !=""){
+                    a.value=""
+                    b.value=""
+                    c.value=""
+                }
+                
+            }
+            fill()
+            
+
+            // push({name:a.value,age:b.value,place:c.value,},fill)
+
+
+               
+                // name:a,age:b,place:c
+    </script>
+</body>
+</html>
